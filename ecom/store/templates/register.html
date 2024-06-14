@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content  %}    
+ <!-- Header-->
+ <header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Register</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Welcome to our ecommerce site</p>
+        </div>
+    </div>
+</header>
+<br>
+<div class="container">
+    <div class="row">
+        
+            <Div class="col-md-6 offset-md-3 ">
+                <form method="POST" action={% url 'register' %}>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    {% if form.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                    <br></br>
+                    <button type ="submit" class="btn btn-secondary">
+                        Register
+                    </button>
+                    
+                  </form>
+            </Div>
+        
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock  %}
